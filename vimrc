@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
+Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'tsaleh/vim-align.git'
 Bundle 'wincent/Command-T.git'
