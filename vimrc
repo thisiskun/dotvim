@@ -11,12 +11,14 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
+Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'tsaleh/vim-align.git'
 Bundle 'wincent/Command-T.git'
 Bundle 'skammer/vim-css-color.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-haml'
 Bundle 'vim-scripts/loremipsum.git'
 Bundle 'vim-scripts/matchit.zip.git'
 Bundle 'vim-scripts/mru.vim.git'
