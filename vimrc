@@ -214,3 +214,6 @@ autocmd FileType css :setlocal g:SuperTabDefaultCompletionType="<c-x><c-o>"
 autocmd FileType js :setlocal g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " }}}
 
+" for ack.vim {{{
+let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
+" }}}
