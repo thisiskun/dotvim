@@ -13,7 +13,6 @@ Bundle 'gmarik/vundle'
 
 Bundle 'mileszs/ack.vim.git'
 Bundle 'tsaleh/vim-align.git'
-Bundle 'vim-scripts/bufexplorer.zip.git'
 Bundle 'wincent/Command-T.git'
 Bundle 'skammer/vim-css-color.git'
 Bundle 'tpope/vim-fugitive.git'
@@ -22,10 +21,8 @@ Bundle 'vim-scripts/matchit.zip.git'
 Bundle 'vim-scripts/mru.vim.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'vim-scripts/Rainbow-Parenthsis-Bundle.git'
 Bundle 'vim-scripts/ruby-matchit.git'
 Bundle 'msanders/snipmate.vim.git'
-Bundle 'rstacruz/sparkup.git'
 Bundle 'ervandew/supertab.git'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'vim-scripts/taglist.vim.git'
@@ -216,4 +213,9 @@ autocmd FileType js :setlocal g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " for ack.vim {{{
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
+" }}}
+
+" for CommandT {{{
+" nnoremap <silent> <leader>t :CommandT<CR>
+nnoremap <silent> <leader>b :CommandTBuffer<CR>
 " }}}
