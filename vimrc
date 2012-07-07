@@ -59,6 +59,7 @@ filetype plugin indent on     " required!
 " }}}
 
 " Basic config {{{
+colorscheme solarized " colorscheme solarized
 set undodir=~/.vimundodir
 set directory=~/.vimbackup
 set modelines=0 " I never user modelines
