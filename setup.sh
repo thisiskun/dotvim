@@ -11,7 +11,3 @@ mkdir ~/.vimundodir
 # setup vundle
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 vim +BundleInstall +qa
-
-# setup Command-T
-cd ~/.vim/bundle/Command-T/; rvm use 1.8.7; bundle install; rake make
-
