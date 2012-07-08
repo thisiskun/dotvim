@@ -16,7 +16,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'tsaleh/vim-align.git'
-Bundle 'wincent/Command-T.git'
 Bundle 'skammer/vim-css-color.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-haml'
@@ -116,7 +115,7 @@ vnoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F2> :TlistToggle<CR>
 nnoremap <silent> <F3> :YRShow<CR>
 inoremap <silent> <F3> <ESC>:YRShow<CR>
-nnoremap <F4> :CommandT<CR>
+nnoremap <F4> :CtrlP<CR>
 nnoremap <F5> :MRU<cr>
 
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -219,7 +218,3 @@ autocmd FileType js :setlocal g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
 " }}}
 
-" for CommandT {{{
-" nnoremap <silent> <leader>t :CommandT<CR>
-nnoremap <silent> <leader>b :CommandTBuffer<CR>
-" }}}
