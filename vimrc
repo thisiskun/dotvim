@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
+Bundle 'thisiskun/snipmate-snippets'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
@@ -218,3 +219,6 @@ autocmd FileType js :setlocal g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
 " }}}
 
+" for snipmate.vim {{{
+let g:snippets_dir="~/.vim/bundle/snipmate-snippets/"
+" }}}
