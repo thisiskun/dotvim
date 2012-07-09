@@ -103,12 +103,7 @@ au FocusLost * :wa
 let localmapleader = "\\"
 " }}}
 
-" abbreviation {{{
-iabbrev @@ chenchaokun@gmail.com
-iabbrev ckblog thisiskun.github.com
-" }}}
-
-" key blind {{{
+" key bindings {{{
 inoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F1> :NERDTreeToggle<CR>
 vnoremap <F1> :NERDTreeToggle<CR>
@@ -120,7 +115,6 @@ nnoremap <F5> :MRU<cr>
 
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>a :Ack
-nnoremap <leader>ft Vatzf
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>q gqip
 nnoremap <leader>v V`]
@@ -147,9 +141,6 @@ inoremap <esc> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader><space> :noh<cr>
-" nnoremap H ^
-" nnoremap L $
-nnoremap <leader><space> :noh<cr>
 nmap <tab> %
 vmap <tab> %
 nnoremap <space> za
@@ -161,8 +152,6 @@ nnoremap <leader>U vawUea
 nnoremap <leader>u vawuea
 " strip all trailing whitespaces in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" fold tag
-nnoremap <leader>ft Vatzf
 " select the text that was just pasted
 nnoremap <leader>v V`]
 " }}}
@@ -190,14 +179,6 @@ augroup filetype_vim
 augroup END
 " }}}
 
-" Html file settings {{{
-augroup filetype_html
-  autocmd!
-  autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
-  autocmd FileType html :setlocal nowrap
-  autocmd BufWrite,BufRead *.html :normal gg=G
-augroup END
-" }}}
 
 " thor file setting {{{
 augroup filetype_thor
@@ -220,4 +201,15 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
 
 " for snipmate.vim {{{
 let g:snippets_dir="~/.vim/bundle/snipmate-snippets/"
+" }}}
+
+" auto command {{{
+
+" Html file settings
+augroup filetype_html
+  autocmd!
+  autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+  autocmd FileType html :setlocal nowrap
+  autocmd BufWrite,BufRead *.html :normal gg=G
+augroup END
 " }}}
