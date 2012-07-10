@@ -59,6 +59,7 @@ filetype plugin indent on     " required!
 " }}}
 
 " Basic config {{{
+set dictionary+=/usr/share/dict/words
 colorscheme solarized " colorscheme solarized
 set undodir=~/.vimundodir
 set directory=~/.vimbackup
