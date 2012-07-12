@@ -76,7 +76,7 @@ set scrolloff=3 " 光标上下两侧保留的可见行数
 set autoindent " 自动缩进
 set copyindent " copy the previous indentation on autoindenting
 set title " change the terminal's title
-set showmode " show mode
+set noshowmode " show mode
 set showcmd
 set hidden " 未保存buffers的时候可以切换
 set wildmenu " 增强命令行补全
