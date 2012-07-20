@@ -192,8 +192,8 @@ augroup END
 let g:SuperTabRetainCompletionDuration='insert'
 " let g:SuperTabSetDefaultCompletionType=2
 " let g:SuperTabDefaultCompletionType = "<c-p>"
-autocmd FileType css :setlocal g:SuperTabDefaultCompletionType="<c-x><c-o>"
-autocmd FileType js :setlocal g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" autocmd FileType css :setlocal g:SuperTabDefaultCompletionType="<c-x><c-o>"
+" autocmd FileType js :setlocal g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " }}}
 
 " for ack.vim {{{
