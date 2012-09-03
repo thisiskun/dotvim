@@ -108,7 +108,7 @@ let localmapleader = "\\"
 inoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F1> :NERDTreeToggle<CR>
 vnoremap <F1> :NERDTreeToggle<CR>
-nnoremap <F2> :TlistToggle<CR>
+nnoremap <F2> :TagbarToggle<CR>
 nnoremap <silent> <F3> :YRShow<CR>
 inoremap <silent> <F3> <ESC>:YRShow<CR>
 nnoremap <F4> :CtrlP<CR>
