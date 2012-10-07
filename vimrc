@@ -213,4 +213,9 @@ augroup filetype_html
   autocmd FileType html :setlocal nowrap
   autocmd BufWrite,BufRead *.html :normal gg=G
 augroup END
+
+augroup sh_tab
+  autocmd!
+  autocmd FileType sh :setlocal noexpandtab
+augroup END
 " }}}
