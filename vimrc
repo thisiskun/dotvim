@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 
 Bundle 'thisiskun/snipmate-snippets'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
@@ -19,6 +20,7 @@ Bundle 'mileszs/ack.vim.git'
 Bundle 'tsaleh/vim-align.git'
 Bundle 'skammer/vim-css-color.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-haml'
 Bundle 'vim-scripts/loremipsum.git'
 Bundle 'vim-scripts/matchit.zip.git'
@@ -60,7 +62,7 @@ filetype plugin indent on     " required!
 
 " Basic config {{{
 set dictionary+=/usr/share/dict/words
-colorscheme solarized " colorscheme solarized
+" colorscheme solarized " colorscheme solarized
 set undodir=~/.vimundodir
 set directory=~/.vimbackup
 set modelines=0 " I never user modelines
