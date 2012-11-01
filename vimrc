@@ -213,7 +213,7 @@ augroup filetype_html
   autocmd!
   autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
   autocmd FileType html :setlocal nowrap
-  autocmd BufWrite,BufRead *.html :normal gg=G
+  " autocmd BufWrite,BufRead *.html :normal gg=G
 augroup END
 
 augroup sh_tab
