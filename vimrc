@@ -144,8 +144,8 @@ inoremap <esc> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader><space> :noh<cr>
-nmap <tab> %
-vmap <tab> %
+nmap <tab> :bn<cr>
+nmap <s-tab> :bp<cr>
 nnoremap <space> za
 nnoremap <space> za
 " use normal regexes
