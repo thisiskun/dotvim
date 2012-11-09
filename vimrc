@@ -34,6 +34,7 @@ Bundle 'majutsushi/tagbar.git'
 Bundle 'tomtom/tcomment_vim.git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'larssmit/vim-getafe'
 Bundle 'rson/vim-conque.git'
 Bundle 'tpope/vim-rails.git'
@@ -108,6 +109,7 @@ set formatoptions=qrnl
 set colorcolumn=85
 au FocusLost * :wa
 let localmapleader = "\\"
+set mouse=a
 " }}}
 
 " key bindings {{{
