@@ -34,6 +34,7 @@ Bundle 'majutsushi/tagbar.git'
 Bundle 'tomtom/tcomment_vim.git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'larssmit/vim-getafe'
 Bundle 'rson/vim-conque.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
@@ -41,6 +42,9 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'drmingdrmer/xptemplate.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'mattn/zencoding-vim.git'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'chrisbra/NrrwRgn'
+Bundle 'skalnik/vim-vroom'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
@@ -147,7 +151,6 @@ nnoremap <leader><space> :noh<cr>
 nmap <tab> %
 vmap <tab> %
 nnoremap <space> za
-nnoremap <space> za
 " use normal regexes
 nnoremap / /\v
 vnoremap / /\v
@@ -157,6 +160,11 @@ nnoremap <leader>u vawuea
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " select the text that was just pasted
 nnoremap <leader>v V`]
+" use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
+" (it will prompt for sudo password when writing)
+cnoremap w!! %!sudo tee > /dev/null %
+" cd to current file
+cnoremap ccd cd %:p:h
 " }}}
 
 " Tag list (ctags) {{{
