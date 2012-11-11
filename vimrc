@@ -11,6 +11,8 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
+Bundle 'gregsexton/MatchTag'
+Bundle 'godlygeek/tabular'
 Bundle 'thisiskun/snipmate-snippets'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-easymotion'
@@ -18,13 +20,12 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'tsaleh/vim-align.git'
-Bundle 'skammer/vim-css-color.git'
+" Bundle 'skammer/vim-css-color.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-haml'
 Bundle 'vim-scripts/loremipsum.git'
 Bundle 'vim-scripts/matchit.zip.git'
-Bundle 'vim-scripts/mru.vim.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'vim-scripts/ruby-matchit.git'
@@ -97,6 +98,7 @@ set laststatus=2
 set relativenumber " new in 7.3
 set undofile " new in 7.3
 let mapleader = "," " change default mapleader to ,
+let maplocalleader = "\\"
 set ignorecase " for search
 set smartcase " for search
 set gdefault " default global replace
@@ -108,8 +110,10 @@ set textwidth=79
 set formatoptions=qrnl
 set colorcolumn=85
 au FocusLost * :wa
-let localmapleader = "\\"
 set mouse=a
+set wildignorecase
+set t_Co=256
+highlight MatchParen ctermfg=red
 " }}}
 
 " key bindings {{{
@@ -117,19 +121,23 @@ inoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F1> :NERDTreeToggle<CR>
 vnoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F2> :TagbarToggle<CR>
-nnoremap <silent> <F3> :YRShow<CR>
-inoremap <silent> <F3> <ESC>:YRShow<CR>
-nnoremap <F4> :CtrlP<CR>
-nnoremap <F5> :MRU<cr>
+" nnoremap <silent> <F3> :YRShow<CR>
+" inoremap <silent> <F3> <ESC>:YRShow<CR>
+nnoremap <F3> :CtrlPMRUFiles<cr>
+nnoremap <F4> :CtrlPBuffer<CR>
+nnoremap <F5> :CtrlP<CR>
+nnoremap <F6> :CtrlPTag<CR>
 
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <leader>a :Ack
+" 打开 ack
+nnoremap <leader>a :Ack 
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>q gqip
+" 选择黏贴内容
 nnoremap <leader>v V`]
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-" quickr escaping
+" quicker escaping
 inoremap jj <ESC>
 " working with split windows
 nnoremap <leader>w <C-w>v<C-w>l
@@ -156,24 +164,21 @@ nnoremap <space> za
 " use normal regexes
 nnoremap / /\v
 vnoremap / /\v
+" 变大写
 nnoremap <leader>U vawUea
+" 变小写
 nnoremap <leader>u vawuea
 " strip all trailing whitespaces in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" select the text that was just pasted
-nnoremap <leader>v V`]
 " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
 " (it will prompt for sudo password when writing)
 cnoremap w!! %!sudo tee > /dev/null %
-" cd to current file
-cnoremap ccd cd %:p:h
-" }}}
-
-" Tag list (ctags) {{{
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
+nnoremap <leader>z :ZoomWin<cr>
+nnoremap <leader>cd :cd %:p:h<cr>
 " }}}
 
 " for fugitive {{{
@@ -191,7 +196,6 @@ augroup filetype_vim
   au FileType vim setlocal foldmethod=marker
 augroup END
 " }}}
-
 
 " thor file setting {{{
 augroup filetype_thor
@@ -218,16 +222,68 @@ let g:snippets_dir="~/.vim/bundle/snipmate-snippets/"
 
 " auto command {{{
 
-" Html file settings
+" Html file settings {{{
 augroup filetype_html
   autocmd!
   autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
   autocmd FileType html :setlocal nowrap
   " autocmd BufWrite,BufRead *.html :normal gg=G
 augroup END
+" }}}
 
+" sh file tab settings {{{
 augroup sh_tab
   autocmd!
   autocmd FileType sh :setlocal noexpandtab
 augroup END
+" }}}
+" }}}
+
+" for Powerline {{{
+let g:Powerline_symbols = 'fancy'
+"}}}
+
+" for tagbar {{{
+" basic {{{
+let g:tagbar_autofocus = 1 " move to tagbar window when opened
+let g:tagbar_sort = 0 " sorted according to source file order
+" }}}
+
+" markdown {{{
+let g:tagbar_type_markdown = {
+	\ 'ctagstype' : 'markdown',
+	\ 'kinds' : [
+		\ 'h:Heading_L1',
+		\ 'i:Heading_L2',
+		\ 'k:Heading_L3'
+	\ ]
+\ }
+" }}}
+
+" ruby {{{
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
+\ }
+" }}}
+
+" }}}
+
+" for CtrlP {{{
+let g:ctrlp_cmd = 'CtrlP'
+" }}}
+
+" for tabluar {{{
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 " }}}
