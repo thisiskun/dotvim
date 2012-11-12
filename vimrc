@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
+Bundle 'sjl/gundo.vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'godlygeek/tabular'
 Bundle 'thisiskun/snipmate-snippets'
@@ -44,9 +45,9 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'drmingdrmer/xptemplate.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'mattn/zencoding-vim.git'
-Bundle 'vim-scripts/ZoomWin'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'skalnik/vim-vroom'
+Bundle 'regedarek/ZoomWin'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
@@ -117,6 +118,8 @@ highlight MatchParen ctermfg=red
 " }}}
 
 " key bindings {{{
+
+" Fn keys {{{
 inoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F1> :NERDTreeToggle<CR>
 vnoremap <F1> :NERDTreeToggle<CR>
@@ -127,6 +130,8 @@ nnoremap <F3> :CtrlPMRUFiles<cr>
 nnoremap <F4> :CtrlPBuffer<CR>
 nnoremap <F5> :CtrlP<CR>
 nnoremap <F6> :CtrlPTag<CR>
+nnoremap <F7> :GundoToggle<CR>
+" }}}
 
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " 打开 ack
@@ -179,6 +184,7 @@ vnoremap H ^
 vnoremap L $
 nnoremap <leader>z :ZoomWin<cr>
 nnoremap <leader>cd :cd %:p:h<cr>
+nnoremap <leader>q gqip
 " }}}
 
 " for fugitive {{{
@@ -208,8 +214,8 @@ augroup END
 let g:SuperTabRetainCompletionDuration='insert'
 " let g:SuperTabSetDefaultCompletionType=2
 " let g:SuperTabDefaultCompletionType = "<c-p>"
-" autocmd FileType css :setlocal g:SuperTabDefaultCompletionType="<c-x><c-o>"
-" autocmd FileType js :setlocal g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+autocmd FileType css :let b:SuperTabDefaultCompletionType = "<c-x><c-o>"
+autocmd FileType js  :let b:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " }}}
 
 " for ack.vim {{{
