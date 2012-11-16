@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'sjl/gundo.vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'godlygeek/tabular'
@@ -25,6 +26,11 @@ Bundle 'tsaleh/vim-align.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-unimpaired.git'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-repeat.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/loremipsum.git'
 Bundle 'vim-scripts/matchit.zip.git'
 Bundle 'scrooloose/nerdtree.git'
@@ -34,14 +40,10 @@ Bundle 'msanders/snipmate.vim.git'
 Bundle 'ervandew/supertab.git'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'tomtom/tcomment_vim.git'
-Bundle 'tpope/vim-unimpaired.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'larssmit/vim-getafe'
 Bundle 'rson/vim-conque.git'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-repeat.git'
-Bundle 'tpope/vim-surround.git'
 Bundle 'drmingdrmer/xptemplate.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'mattn/zencoding-vim.git'
@@ -67,7 +69,7 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 " }}}
 
-" Basic config {{{
+" basic config {{{
 set dictionary+=/usr/share/dict/words
 " colorscheme solarized " colorscheme solarized
 set undodir=~/.vimundodir
@@ -185,6 +187,11 @@ vnoremap L $
 nnoremap <leader>z :ZoomWin<cr>
 nnoremap <leader>cd :cd %:p:h<cr>
 nnoremap <leader>q gqip
+inoremap <s-enter> <esc>o
+inoremap <c-s-enter> <esc>O
+nnoremap <leader>z :ZoomWin<cr>
+inoremap <c-s> <esc>:w<cr>
+nnoremap <c-s> :w<cr>
 " }}}
 
 " for fugitive {{{
@@ -196,7 +203,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " }}}
 
-" Vimscript file settings {{{
+" vimscript file settings {{{
 augroup filetype_vim
   au!
   au FileType vim setlocal foldmethod=marker
@@ -214,7 +221,7 @@ augroup END
 let g:SuperTabRetainCompletionDuration='insert'
 " let g:SuperTabSetDefaultCompletionType=2
 " let g:SuperTabDefaultCompletionType = "<c-p>"
-autocmd FileType css :let b:SuperTabDefaultCompletionType = "<c-x><c-o>"
+autocmd FileType css,sass,scss :let b:SuperTabDefaultCompletionType = "<c-x><c-o>"
 autocmd FileType js  :let b:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " }}}
 
@@ -231,7 +238,7 @@ let g:snippets_dir="~/.vim/bundle/snipmate-snippets/"
 " Html file settings {{{
 augroup filetype_html
   autocmd!
-  autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+  autocmd FileType html nnoremap <buffer> <leader>f Vatzf
   autocmd FileType html :setlocal nowrap
   " autocmd BufWrite,BufRead *.html :normal gg=G
 augroup END
@@ -243,6 +250,15 @@ augroup sh_tab
   autocmd FileType sh :setlocal noexpandtab
 augroup END
 " }}}
+
+" for css key mappings {{{ 
+augroup cssKeyMappings
+  autocmd!
+  autocmd FileType css,scss,sass inoremap <buffer> { {  }<esc>hi
+  autocmd FileType css,scss,sass inoremap <buffer> : : ;<esc>i
+augroup END
+" }}}
+
 " }}}
 
 " for Powerline {{{
@@ -293,3 +309,4 @@ if exists(":Tabularize")
   vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 " }}}
+
