@@ -11,6 +11,9 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
+Bundle 'Raimondi/delimitMate'
+Bundle 'bbommarito/vim-slim'
+Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'sjl/gundo.vim'
 Bundle 'gregsexton/MatchTag'
@@ -43,7 +46,6 @@ Bundle 'tomtom/tcomment_vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'larssmit/vim-getafe'
-Bundle 'rson/vim-conque.git'
 Bundle 'drmingdrmer/xptemplate.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'mattn/zencoding-vim.git'
@@ -70,6 +72,7 @@ filetype plugin indent on     " required!
 " }}}
 
 " basic config {{{
+" set formatprg=par
 set dictionary+=/usr/share/dict/words
 " colorscheme solarized " colorscheme solarized
 set undodir=~/.vimundodir
@@ -190,8 +193,6 @@ nnoremap <leader>q gqip
 inoremap <s-enter> <esc>o
 inoremap <c-s-enter> <esc>O
 nnoremap <leader>z :ZoomWin<cr>
-inoremap <c-s> <esc>:w<cr>
-nnoremap <c-s> :w<cr>
 " }}}
 
 " for fugitive {{{
@@ -207,13 +208,6 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 augroup filetype_vim
   au!
   au FileType vim setlocal foldmethod=marker
-augroup END
-" }}}
-
-" thor file setting {{{
-augroup filetype_thor
-  autocmd!
-  autocmd BufRead,BufNewFile *.thor setlocal ft=ruby
 augroup END
 " }}}
 
@@ -238,9 +232,16 @@ let g:snippets_dir="~/.vim/bundle/snipmate-snippets/"
 " Html file settings {{{
 augroup filetype_html
   autocmd!
-  autocmd FileType html nnoremap <buffer> <leader>f Vatzf
-  autocmd FileType html :setlocal nowrap
+  autocmd FileType html,eruby nnoremap <buffer> <leader>f Vatzf
+  autocmd FileType html,eruby :setlocal nowrap
   " autocmd BufWrite,BufRead *.html :normal gg=G
+augroup END
+" }}}
+
+" ruby file setting {{{
+augroup filetype_ruby
+  autocmd!
+  autocmd BufRead,BufNewFile *.thor,Guardfile,Capfile setlocal ft=ruby
 augroup END
 " }}}
 
@@ -248,14 +249,6 @@ augroup END
 augroup sh_tab
   autocmd!
   autocmd FileType sh :setlocal noexpandtab
-augroup END
-" }}}
-
-" for css key mappings {{{ 
-augroup cssKeyMappings
-  autocmd!
-  autocmd FileType css,scss,sass inoremap <buffer> { {  }<esc>hi
-  autocmd FileType css,scss,sass inoremap <buffer> : : ;<esc>i
 augroup END
 " }}}
 
