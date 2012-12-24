@@ -11,23 +11,28 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
-Bundle 'Raimondi/delimitMate'
+" 双引号括号自动补全
+Bundle 'Raimondi/delimitMate' 
 Bundle 'bbommarito/vim-slim'
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'kchmck/vim-coffee-script'
+" ruby html 单行转多行
+Bundle 'AndrewRadev/splitjoin.vim' 
+Bundle 'kchmck/vim-coffee-script' 
 Bundle 'sjl/gundo.vim'
-Bundle 'gregsexton/MatchTag'
+" highlight html tags
+Bundle 'gregsexton/MatchTag' 
+" 对齐用 
 Bundle 'godlygeek/tabular'
 Bundle 'thisiskun/snipmate-snippets'
-Bundle 'nathanaelkane/vim-indent-guides'
+" 快速定位
 Bundle 'Lokaltog/vim-easymotion'
+" 语法检查
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim.git'
-Bundle 'tsaleh/vim-align.git'
 " Bundle 'skammer/vim-css-color.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-bundler'
+" haml scss sass support
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'tpope/vim-rails.git'
@@ -45,11 +50,12 @@ Bundle 'majutsushi/tagbar.git'
 Bundle 'tomtom/tcomment_vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'larssmit/vim-getafe'
 Bundle 'drmingdrmer/xptemplate.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'mattn/zencoding-vim.git'
+" 区域编辑
 Bundle 'chrisbra/NrrwRgn'
+" ruby test
 Bundle 'skalnik/vim-vroom'
 Bundle 'regedarek/ZoomWin'
 " vim-scripts repos
@@ -74,10 +80,9 @@ filetype plugin indent on     " required!
 " basic config {{{
 " set formatprg=par
 set dictionary+=/usr/share/dict/words
-" colorscheme solarized " colorscheme solarized
 set undodir=~/.vimundodir
 set directory=~/.vimbackup
-set modelines=0 " I never user modelines
+set modelines=0 " I never use modelines
 set number " always show line number
 set background=dark " background dark
 set tabstop=2 " default expand tab to 2 spaces
@@ -114,12 +119,12 @@ set hlsearch " heightline search results
 set wrap " wrap text
 set textwidth=79
 set formatoptions=qrnl
-set colorcolumn=85
+" set colorcolumn=85
 au FocusLost * :wa
 set mouse=a
 set wildignorecase
 set t_Co=256
-highlight MatchParen ctermfg=red
+" highlight MatchParen ctermfg=red
 " }}}
 
 " key bindings {{{
@@ -145,10 +150,12 @@ nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>q gqip
 " 选择黏贴内容
 nnoremap <leader>v V`]
+" 黏贴黏贴板内容并格式化
+nnoremap <leader>p o<esc>"+pV`]=
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " quicker escaping
-inoremap jj <ESC>
+inoremap jk <ESC>
 " working with split windows
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
@@ -175,9 +182,9 @@ nnoremap <space> za
 nnoremap / /\v
 vnoremap / /\v
 " 变大写
-nnoremap <leader>U vawUea
+nnoremap <leader>U vawUe
 " 变小写
-nnoremap <leader>u vawuea
+nnoremap <leader>u vawue
 " strip all trailing whitespaces in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
@@ -189,10 +196,10 @@ vnoremap H ^
 vnoremap L $
 nnoremap <leader>z :ZoomWin<cr>
 nnoremap <leader>cd :cd %:p:h<cr>
-nnoremap <leader>q gqip
 inoremap <s-enter> <esc>o
 inoremap <c-s-enter> <esc>O
-nnoremap <leader>z :ZoomWin<cr>
+" 格式化
+nnoremap <leader>= gg=G``
 " }}}
 
 " for fugitive {{{
@@ -234,7 +241,6 @@ augroup filetype_html
   autocmd!
   autocmd FileType html,eruby nnoremap <buffer> <leader>f Vatzf
   autocmd FileType html,eruby :setlocal nowrap
-  " autocmd BufWrite,BufRead *.html :normal gg=G
 augroup END
 " }}}
 
@@ -296,10 +302,10 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " for tabluar {{{
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nnoremap <Leader>a= :Tabularize /=<CR>
+  vnoremap <Leader>a= :Tabularize /=<CR>
+  nnoremap <Leader>a: :Tabularize /:\zs<CR>
+  vnoremap <Leader>a: :Tabularize /:\zs<CR>
 endif
 " }}}
 
