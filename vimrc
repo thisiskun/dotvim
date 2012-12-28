@@ -155,7 +155,7 @@ nnoremap <leader>p o<esc>"+pV`]=
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " quicker escaping
-inoremap jk <ESC>
+inoremap jj <ESC>
 " working with split windows
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
