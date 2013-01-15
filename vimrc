@@ -13,7 +13,9 @@ Bundle 'gmarik/vundle'
 
 " 双引号括号自动补全
 Bundle 'Raimondi/delimitMate' 
-Bundle 'bbommarito/vim-slim'
+Bundle 'benmills/vimux' 
+Bundle 'duskhacker/sweet-rspec-vim'
+Bundle 'slim-template/vim-slim'
 " ruby html 单行转多行
 Bundle 'AndrewRadev/splitjoin.vim' 
 Bundle 'kchmck/vim-coffee-script' 
@@ -39,6 +41,7 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-cucumber'
 Bundle 'vim-scripts/loremipsum.git'
 Bundle 'vim-scripts/matchit.zip.git'
 Bundle 'scrooloose/nerdtree.git'
@@ -56,7 +59,6 @@ Bundle 'mattn/zencoding-vim.git'
 " 区域编辑
 Bundle 'chrisbra/NrrwRgn'
 " ruby test
-Bundle 'skalnik/vim-vroom'
 Bundle 'regedarek/ZoomWin'
 " vim-scripts repos
 " Bundle 'L9'
@@ -143,9 +145,8 @@ nnoremap <F6> :CtrlPTag<CR>
 nnoremap <F7> :GundoToggle<CR>
 " }}}
 
+vnoremap <C-r> "hy:%s/<C-r>h//<left>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" 打开 ack
-nnoremap <leader>a :Ack 
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>q gqip
 " 选择黏贴内容
@@ -301,11 +302,31 @@ let g:ctrlp_cmd = 'CtrlP'
 " }}}
 
 " for tabluar {{{
-if exists(":Tabularize")
-  nnoremap <Leader>a= :Tabularize /=<CR>
-  vnoremap <Leader>a= :Tabularize /=<CR>
-  nnoremap <Leader>a: :Tabularize /:\zs<CR>
-  vnoremap <Leader>a: :Tabularize /:\zs<CR>
-endif
+nnoremap <Leader>a= :Tabularize /=<CR>
+vnoremap <Leader>a= :Tabularize /=<CR>
+nnoremap <Leader>a: :Tabularize /:\zs<CR>
+vnoremap <Leader>a: :Tabularize /:\zs<CR>
 " }}}
 
+" for vimux {{{
+ let g:VimuxHeight = "40"
+
+ " Run the current file with rspec
+ map <leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<cr>
+ " Run the current line with rspec
+ map <Leader>rl :call VimuxRunCommand("clear; rspec " . bufname("%") . " -l " . line("."))<cr>
+ " Prompt for a command to run map
+ map <Leader>tp :VimuxPromptCommand<CR>
+ " Run last command executed by VimuxRunCommand
+ map <Leader>tl :VimuxRunLastCommand<CR>
+ " Inspect runner pane map
+ map <Leader>ti :VimuxInspectRunner<CR>
+ " Close vim tmux runner opened by VimuxRunCommand
+ map <Leader>tq :VimuxCloseRunner<CR>
+ " Close all other tmux panes in current window
+ map <Leader>tx :VimuxClosePanes<CR>
+ " Interrupt any command running in the runner pane map
+ map <Leader>ts :VimuxInterruptRunner<CR>
+ " Clear the tmux history of the runner pane
+ map <Leader>tc :VimuxClearRunnerHistory<CR>
+" }}}
