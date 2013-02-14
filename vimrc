@@ -12,6 +12,8 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 
 " 双引号括号自动补全
+Bundle 'othree/html5.vim' 
+Bundle 'hail2u/vim-css3-syntax' 
 Bundle 'Raimondi/delimitMate' 
 Bundle 'benmills/vimux' 
 Bundle 'duskhacker/sweet-rspec-vim'
