@@ -11,9 +11,9 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 
-" 双引号括号自动补全
 Bundle 'othree/html5.vim' 
 Bundle 'hail2u/vim-css3-syntax' 
+" 双引号括号自动补全
 Bundle 'Raimondi/delimitMate' 
 Bundle 'benmills/vimux' 
 Bundle 'duskhacker/sweet-rspec-vim'
@@ -21,14 +21,11 @@ Bundle 'slim-template/vim-slim'
 " ruby html 单行转多行
 Bundle 'AndrewRadev/splitjoin.vim' 
 Bundle 'kchmck/vim-coffee-script' 
-Bundle 'sjl/gundo.vim'
 " highlight html tags
 Bundle 'gregsexton/MatchTag' 
 " 对齐用 
 Bundle 'godlygeek/tabular'
 Bundle 'thisiskun/snipmate-snippets'
-" 快速定位
-Bundle 'Lokaltog/vim-easymotion'
 " 语法检查
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
@@ -58,9 +55,6 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'drmingdrmer/xptemplate.git'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'mattn/zencoding-vim.git'
-" 区域编辑
-Bundle 'chrisbra/NrrwRgn'
-" ruby test
 Bundle 'regedarek/ZoomWin'
 " vim-scripts repos
 " Bundle 'L9'
